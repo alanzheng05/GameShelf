@@ -1,0 +1,15 @@
+.page-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.5rem clamp(1rem, 4vw, 2rem) 3rem;
+}
+
+.page-content {
+  margin-top: 1.25rem;
+  position: relative;
+  background: linear-gradient(180deg, rgba(20, 24, 32, 0.98) 0%, rgba(18, 21, 28, 0.99) 100%);
+  border: 1px solid var(--gs-border-strong);
+  border-radius: 16px;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  box-shadow: var(--gs-shadow-lg);
+}

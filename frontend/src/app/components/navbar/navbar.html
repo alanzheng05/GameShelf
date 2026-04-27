@@ -1,0 +1,11 @@
+<nav class="nav">
+  <a routerLink="/" class="brand" aria-label="GameShelf home">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-text">Game<span class="brand-accent">Shelf</span></span>
+  </a>
+  <div class="links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Library</a>
+    <a routerLink="/add" routerLinkActive="active">Add game</a>
+    <a routerLink="/search" routerLinkActive="active">Search</a>
+  </div>
+</nav>

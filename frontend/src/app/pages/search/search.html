@@ -1,0 +1,44 @@
+<header class="search-intro">
+  <p class="eyebrow">Discover</p>
+  <h1>Search games</h1>
+  <p class="sub">
+    Look up titles and add them to your library. Try <strong>Zelda</strong>, <strong>Hades</strong>, or
+    <strong>Minecraft</strong>.
+  </p>
+</header>
+
+<div class="search-wrap">
+  <label class="search-field" for="game-search-input">
+    <span class="search-field__icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="11" cy="11" r="7" />
+        <path d="M21 21l-4.35-4.35" />
+      </svg>
+    </span>
+    <input
+      id="game-search-input"
+      [(ngModel)]="query"
+      (keydown.enter)="search()"
+      placeholder="Search by title…"
+      type="search"
+      autocomplete="off"
+    />
+  </label>
+  <button type="button" class="search-submit" (click)="search()" [disabled]="isLoading">
+    {{ isLoading ? 'Searching…' : 'Search' }}
+  </button>
+</div>
+
+<p class="message" *ngIf="message" [class.message--ok]="message.includes('added')">{{ message }}</p>
+
+<div class="results" *ngIf="results.length">
+  <article *ngFor="let game of results; let i = index" class="result-card">
+    <div class="cover" [attr.aria-hidden]="true">{{ initialsFromName(game.name) }}</div>
+    <div class="body">
+      <h2>{{ game.name }}</h2>
+      <p class="platforms" *ngIf="game.platforms?.length">{{ getPlatformsText(game) }}</p>
+      <p class="summary" *ngIf="game.summary">{{ game.summary }}</p>
+      <button type="button" class="add-btn" (click)="addToLibrary(game)">Add to library</button>
+    </div>
+  </article>
+</div>

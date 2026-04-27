@@ -1,0 +1,18 @@
+<article class="game-card">
+  <div class="game-card__thumb" aria-hidden="true">{{ initials() }}</div>
+  <div class="game-card__main">
+    <div class="game-card__top">
+      <h3 class="game-card__title">{{ game.title }}</h3>
+      <span class="badge" [ngClass]="'status--' + game.status">{{ statusLabel }}</span>
+    </div>
+    <p class="meta">
+      <span class="meta-label">Platform</span>
+      {{ game.platform }}
+    </p>
+    <p class="notes" *ngIf="game.notes">{{ game.notes }}</p>
+    <div class="actions">
+      <a [routerLink]="['/edit', game._id]">Edit</a>
+      <button type="button" (click)="onDelete()">Remove</button>
+    </div>
+  </div>
+</article>

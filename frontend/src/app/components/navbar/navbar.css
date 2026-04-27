@@ -1,0 +1,102 @@
+:host {
+  display: block;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.65rem 0.85rem 0.65rem 0.65rem;
+  background: rgba(18, 21, 28, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--gs-border);
+  border-radius: 14px;
+  box-shadow: var(--gs-shadow);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--gs-text);
+  padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+  border-radius: var(--gs-radius-sm);
+}
+
+.brand-text {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-size: 1.125rem;
+}
+
+.brand-accent {
+  color: var(--gs-accent);
+  font-weight: 700;
+}
+
+/* Minimal “shelf” icon */
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(160deg, var(--gs-card) 0%, var(--gs-bg-elevated) 100%);
+  border: 1px solid var(--gs-border-strong);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.brand-mark::before,
+.brand-mark::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, var(--gs-accent), rgba(61, 255, 186, 0.35));
+  opacity: 0.85;
+}
+
+.brand-mark::before {
+  top: 10px;
+}
+
+.brand-mark::after {
+  bottom: 10px;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.links a {
+  color: var(--gs-text-secondary);
+  text-decoration: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition:
+    color 0.18s ease,
+    background 0.18s ease;
+}
+
+.links a:hover {
+  color: var(--gs-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.links a.active {
+  color: var(--gs-accent-text);
+  background: var(--gs-accent);
+  font-weight: 600;
+  box-shadow: 0 0 20px var(--gs-accent-glow);
+}

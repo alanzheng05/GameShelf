@@ -1,0 +1,51 @@
+<header class="library-header">
+  <div class="library-header__text">
+    <p class="eyebrow">Collection</p>
+    <h1>Your library</h1>
+    <p class="sub">Track what you’re playing, finished, and what you want to play next.</p>
+  </div>
+  <a class="btn-cta" routerLink="/add">
+    <span class="btn-cta__icon" aria-hidden="true">+</span>
+    Add game
+  </a>
+</header>
+
+<div class="toolbar" *ngIf="!isLoading && games.length">
+  <span class="toolbar__count"
+    >{{ filteredGames.length }} {{ filteredGames.length === 1 ? 'title' : 'titles' }}</span
+  >
+</div>
+
+<div class="filters" role="tablist" aria-label="Filter by status">
+  <button
+    *ngFor="let f of filters"
+    type="button"
+    role="tab"
+    [attr.aria-selected]="statusFilter === f.value"
+    [class.active]="statusFilter === f.value"
+    (click)="setFilter(f.value)"
+  >
+    {{ f.label }}
+  </button>
+</div>
+
+<div class="loading-block" *ngIf="isLoading" role="status" aria-live="polite">
+  <span class="spinner" aria-hidden="true"></span>
+  <span>Loading your library…</span>
+</div>
+<p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+<div class="grid" *ngIf="!isLoading && filteredGames.length">
+  <app-game-card
+    *ngFor="let game of filteredGames"
+    [game]="game"
+    (delete)="deleteGame($event)"
+  ></app-game-card>
+</div>
+
+<p class="empty" *ngIf="!isLoading && games.length && !filteredGames.length">
+  Nothing in this list yet. Try another filter or add a game.
+</p>
+<p class="empty" *ngIf="!isLoading && !games.length">
+  No games yet. Add one or use Search to find titles.
+</p>
