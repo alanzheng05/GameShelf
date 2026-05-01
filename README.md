@@ -53,6 +53,7 @@ http://localhost:4200
 ```
 cd backend
 npm install
+node seed.js
 npm run dev
 ```
 
