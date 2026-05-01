@@ -4,40 +4,34 @@
   <p class="sub">Title, platform, status, and optional notes.</p>
 </header>
 
-<div class="form-layout">
-  <form (ngSubmit)="saveGame()" #gameForm="ngForm" class="form-card">
-    <label>
-      Title
-      <input [(ngModel)]="game.title" name="title" placeholder="e.g. Hollow Knight" required />
-    </label>
+<form (ngSubmit)="saveGame()" #gameForm="ngForm" class="form-card">
+  <label>
+    Title
+    <input [(ngModel)]="game.title" name="title" placeholder="e.g. Hollow Knight" required />
+  </label>
 
-    <label>
-      Platform
-      <input [(ngModel)]="game.platform" name="platform" placeholder="e.g. PC, Switch" required />
-    </label>
+  <label>
+    Platform
+    <input [(ngModel)]="game.platform" name="platform" placeholder="e.g. PC, Switch" required />
+  </label>
 
-    <label>
-      Status
-      <select [(ngModel)]="game.status" name="status">
-        <option value="playing">Playing</option>
-        <option value="completed">Completed</option>
-        <option value="wishlist">Wishlist</option>
-      </select>
-    </label>
+  <label>
+    Status
+    <select [(ngModel)]="game.status" name="status">
+      <option value="playing">Playing</option>
+      <option value="completed">Completed</option>
+      <option value="wishlist">Wishlist</option>
+    </select>
+  </label>
 
-    <label>
-      Notes
-      <textarea [(ngModel)]="game.notes" name="notes" rows="4" placeholder="Where you left off, DLC, etc."></textarea>
-    </label>
+  <label>
+    Notes
+    <textarea [(ngModel)]="game.notes" name="notes" rows="4" placeholder="Where you left off, DLC, etc."></textarea>
+  </label>
 
-    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
-    <button type="submit" [disabled]="gameForm.invalid || isSaving">
-      {{ isSaving ? 'Saving…' : 'Save to library' }}
-    </button>
-  </form>
-
-  <aside class="cover-panel" *ngIf="coverPreviewUrl() as coverUrl">
-    <img [src]="coverUrl" alt="" loading="lazy" />
-  </aside>
-</div>
+  <button type="submit" [disabled]="gameForm.invalid || isSaving">
+    {{ isSaving ? 'Saving…' : 'Save to library' }}
+  </button>
+</form>

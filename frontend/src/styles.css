@@ -16,10 +16,6 @@
   --gs-text: #f0f2f7;
   --gs-text-secondary: #9aa3b5;
   --gs-muted: #6b7380;
-  --gs-nav: rgba(18, 21, 28, 0.85);
-  --gs-input: rgba(0, 0, 0, 0.25);
-  --gs-page-top: rgba(20, 24, 32, 0.98);
-  --gs-page-bottom: rgba(18, 21, 28, 0.99);
 
   /* Accent — restrained teal (feels product / library, not neon gamer) */
   --gs-accent: #3dffba;
@@ -62,31 +58,6 @@ body {
   color: var(--gs-text);
   min-height: 100vh;
   line-height: 1.5;
-}
-
-body.light {
-  --gs-bg: #f6f7fb;
-  --gs-bg-elevated: #ffffff;
-  --gs-surface: #f2f4f8;
-  --gs-card: #ffffff;
-  --gs-card-hover: #f4f6fa;
-  --gs-border: rgba(15, 23, 42, 0.12);
-  --gs-border-strong: rgba(15, 23, 42, 0.18);
-  --gs-text: #0f172a;
-  --gs-text-secondary: #4b5563;
-  --gs-muted: #6b7280;
-  --gs-accent-text: #0b2f24;
-  --gs-accent-glow: rgba(61, 255, 186, 0.25);
-  --gs-nav: rgba(255, 255, 255, 0.85);
-  --gs-input: rgba(15, 23, 42, 0.04);
-  --gs-page-top: rgba(255, 255, 255, 0.92);
-  --gs-page-bottom: rgba(245, 247, 251, 0.98);
-  color-scheme: light;
-  background-color: var(--gs-bg);
-  background-image:
-    radial-gradient(ellipse 90% 70% at 50% -30%, rgba(61, 255, 186, 0.18), transparent 60%),
-    radial-gradient(ellipse 80% 50% at 100% 0%, rgba(99, 140, 255, 0.12), transparent 45%),
-    linear-gradient(180deg, var(--gs-bg) 0%, #eef1f6 100%);
 }
 
 a {

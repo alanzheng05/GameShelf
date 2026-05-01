@@ -77,13 +77,4 @@ export class GameForm implements OnInit {
       });
     }
   }
-
-  coverPreviewUrl(): string {
-    const raw = this.game.coverUrl;
-    if (!raw || typeof raw !== 'string') {
-      return '';
-    }
-    const normalized = raw.startsWith('//') ? `https:${raw}` : raw;
-    return normalized.replace(/t_[^/]+/, 't_cover_big');
-  }
 }

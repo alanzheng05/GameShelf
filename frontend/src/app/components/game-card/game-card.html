@@ -1,4 +1,4 @@
-<article class="game-card" [class.is-removing]="isRemoving">
+<article class="game-card">
   <div class="game-card__thumb" aria-hidden="true">
     <ng-container *ngIf="coverUrl() as coverUrl; else thumbFallback">
       <img [src]="coverUrl" alt="" loading="lazy" />

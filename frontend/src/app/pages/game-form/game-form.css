@@ -25,14 +25,6 @@ h1 {
   line-height: 1.5;
 }
 
-.form-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 480px) minmax(0, 1fr);
-  gap: 1.25rem;
-  align-items: start;
-  max-width: 920px;
-}
-
 .form-card {
   display: grid;
   gap: 1.1rem;
@@ -61,7 +53,7 @@ textarea {
   font: inherit;
   font-size: 0.9375rem;
   font-weight: 400;
-  background: var(--gs-input);
+  background: rgba(0, 0, 0, 0.25);
   color: var(--gs-text);
   transition:
     border-color 0.15s ease,
@@ -119,28 +111,6 @@ button[type='submit']:hover:not(:disabled) {
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-.cover-panel {
-  border: 1px solid var(--gs-border);
-  background: var(--gs-card);
-  border-radius: 16px;
-  overflow: hidden;
-  min-height: 280px;
-  display: flex;
-}
-
-.cover-panel img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-@media (max-width: 860px) {
-  .form-layout {
-    grid-template-columns: 1fr;
-  }
 }
 
 .error {

@@ -31,11 +31,6 @@
 
 <p class="message" *ngIf="message" [class.message--ok]="message.includes('added')">{{ message }}</p>
 
-<div class="loading-results" *ngIf="isLoading" role="status" aria-live="polite">
-  Searching
-  <span class="dots" aria-hidden="true"><span></span><span></span><span></span></span>
-</div>
-
 <div class="results" *ngIf="results.length">
   <article *ngFor="let game of results; let i = index" class="result-card">
     <div class="cover" [attr.aria-hidden]="true">
@@ -48,15 +43,7 @@
       <h2>{{ game.name }}</h2>
       <p class="platforms" *ngIf="game.platforms?.length">{{ getPlatformsText(game) }}</p>
       <p class="summary" *ngIf="game.summary">{{ game.summary }}</p>
-      <button
-        type="button"
-        class="add-btn"
-        [class.is-added]="isAdded(game)"
-        [disabled]="isAdded(game)"
-        (click)="addToLibrary(game)"
-      >
-        {{ isAdded(game) ? 'Added!' : 'Add to library' }}
-      </button>
+      <button type="button" class="add-btn" (click)="addToLibrary(game)">Add to library</button>
     </div>
   </article>
 </div>
