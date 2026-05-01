@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GameService } from '../../services/game';
@@ -16,7 +16,10 @@ export class Search {
   isLoading = false;
   message = '';
 
-  constructor(private gameService: GameService) {}
+  constructor(
+    private gameService: GameService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   search() {
     const cleaned = this.query.trim();
@@ -35,21 +38,25 @@ export class Search {
         if (!data.length) {
           this.message = 'No games found.';
         }
+        this.cdr.detectChanges();
       },
       error: () => {
         this.isLoading = false;
         this.results = [];
         this.message = 'Something went wrong. Try again.';
+        this.cdr.detectChanges();
       }
     });
   }
 
   addToLibrary(result: any) {
+    const coverUrl = this.getCoverUrl(result, 'cover_small');
     const gameToCreate: Game = {
       title: result.name ?? 'Unknown title',
       platform: this.getPlatformLabel(result),
       status: 'wishlist',
       notes: result.summary ?? '',
+      coverUrl: coverUrl || undefined,
       igdbId: typeof result.id === 'number' ? result.id : undefined
     };
 
@@ -84,5 +91,14 @@ export class Search {
       return (parts[0][0] + parts[1][0]).toUpperCase();
     }
     return t.slice(0, 2).toUpperCase();
+  }
+
+  getCoverUrl(result: any, size: 'cover_small' | 'cover_big' | 'thumb' = 'cover_small'): string {
+    const raw = result?.cover?.url;
+    if (!raw || typeof raw !== 'string') {
+      return '';
+    }
+    const normalized = raw.startsWith('//') ? `https:${raw}` : raw;
+    return normalized.replace(/t_[^/]+/, `t_${size}`);
   }
 }

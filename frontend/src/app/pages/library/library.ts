@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { GameService } from '../../services/game';
@@ -26,7 +26,10 @@ export class Library implements OnInit {
     { value: 'wishlist', label: 'Wishlist' }
   ];
 
-  constructor(private gameService: GameService) {}
+  constructor(
+    private gameService: GameService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.loadGames();
@@ -46,11 +49,13 @@ export class Library implements OnInit {
       next: (data) => {
         this.games = data;
         this.isLoading = false;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         this.errorMessage = 'Could not load your library.';
         this.isLoading = false;
         console.error('Error loading games:', err);
+        this.cdr.detectChanges();
       }
     });
   }

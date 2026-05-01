@@ -33,7 +33,12 @@
 
 <div class="results" *ngIf="results.length">
   <article *ngFor="let game of results; let i = index" class="result-card">
-    <div class="cover" [attr.aria-hidden]="true">{{ initialsFromName(game.name) }}</div>
+    <div class="cover" [attr.aria-hidden]="true">
+      <ng-container *ngIf="getCoverUrl(game, 'cover_big') as coverUrl; else coverFallback">
+        <img [src]="coverUrl" alt="" loading="lazy" />
+      </ng-container>
+      <ng-template #coverFallback>{{ initialsFromName(game.name) }}</ng-template>
+    </div>
     <div class="body">
       <h2>{{ game.name }}</h2>
       <p class="platforms" *ngIf="game.platforms?.length">{{ getPlatformsText(game) }}</p>
