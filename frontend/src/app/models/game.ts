@@ -4,6 +4,7 @@ export interface Game {
   platform: string;
   status: 'playing' | 'completed' | 'wishlist';
   notes?: string;
+  coverUrl?: string;
   /** Set when added from demo search (IGDB id in production). */
   igdbId?: number;
 }

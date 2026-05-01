@@ -22,6 +22,11 @@ const gameSchema = new mongoose.Schema(
       trim: true,
       default: '',
     },
+    coverUrl: {
+      type: String,
+      trim: true,
+      default: '',
+    },
     igdbId: {
       type: Number,
       default: null,

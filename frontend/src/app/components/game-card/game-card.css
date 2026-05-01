@@ -33,6 +33,14 @@
   color: var(--gs-accent-text);
   background: linear-gradient(145deg, var(--gs-accent) 0%, #2cd4a2 100%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.game-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .game-card__main {
