@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -27,7 +27,8 @@ export class GameForm implements OnInit {
   constructor(
     private gameService: GameService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -38,9 +39,11 @@ export class GameForm implements OnInit {
       this.gameService.getGame(this.id).subscribe({
         next: (data) => {
           this.game = data;
+          this.cdr.detectChanges();
         },
         error: () => {
           this.errorMessage = 'Could not load game details.';
+          this.cdr.detectChanges();
         }
       });
     }
