@@ -3,9 +3,17 @@
     <span class="brand-mark" aria-hidden="true"></span>
     <span class="brand-text">Game<span class="brand-accent">Shelf</span></span>
   </a>
-  <div class="links">
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Library</a>
-    <a routerLink="/add" routerLinkActive="active">Add game</a>
-    <a routerLink="/search" routerLinkActive="active">Search</a>
+  <div class="links" #links>
+    <button
+      type="button"
+      class="theme-toggle"
+      [class.is-on]="isLight"
+      (click)="toggleTheme()"
+      [attr.aria-pressed]="isLight"
+      aria-label="Toggle light mode"
+    ></button>
+    <a #navLink routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Library</a>
+    <a #navLink routerLink="/add" routerLinkActive="active">Add game</a>
+    <a #navLink routerLink="/search" routerLinkActive="active">Search</a>
   </div>
 </nav>

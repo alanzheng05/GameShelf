@@ -10,7 +10,14 @@
   transition:
     border-color 0.2s ease,
     background 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    transform 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.game-card.is-removing {
+  transform: scale(0.96);
+  opacity: 0;
 }
 
 .game-card:hover {

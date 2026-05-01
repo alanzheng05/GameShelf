@@ -15,6 +15,7 @@ export class Search {
   results: any[] = [];
   isLoading = false;
   message = '';
+  addedResults = new Set<string>();
 
   constructor(
     private gameService: GameService,
@@ -31,6 +32,7 @@ export class Search {
 
     this.isLoading = true;
     this.message = '';
+    this.addedResults.clear();
     this.gameService.searchGames(cleaned).subscribe({
       next: (data: any[]) => {
         this.results = data;
@@ -50,6 +52,9 @@ export class Search {
   }
 
   addToLibrary(result: any) {
+    if (this.isAdded(result)) {
+      return;
+    }
     const coverUrl = this.getCoverUrl(result, 'cover_small');
     const gameToCreate: Game = {
       title: result.name ?? 'Unknown title',
@@ -63,11 +68,17 @@ export class Search {
     this.gameService.addGame(gameToCreate).subscribe({
       next: () => {
         this.message = `${gameToCreate.title} added to your library.`;
+        this.addedResults.add(this.resultKey(result));
+        this.cdr.detectChanges();
       },
       error: () => {
         this.message = 'Could not add game to library.';
       }
     });
+  }
+
+  isAdded(result: any): boolean {
+    return this.addedResults.has(this.resultKey(result));
   }
 
   getPlatformsText(result: any): string {
@@ -100,5 +111,13 @@ export class Search {
     }
     const normalized = raw.startsWith('//') ? `https:${raw}` : raw;
     return normalized.replace(/t_[^/]+/, `t_${size}`);
+  }
+
+  private resultKey(result: any): string {
+    const id = typeof result?.id === 'number' ? `id:${result.id}` : '';
+    if (id) {
+      return id;
+    }
+    return `name:${(result?.name || '').toLowerCase()}`;
   }
 }

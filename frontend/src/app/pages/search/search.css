@@ -48,7 +48,7 @@ h1 {
   padding: 0.45rem 0.65rem 0.45rem 0.75rem;
   border-radius: 12px;
   border: 1px solid var(--gs-border);
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--gs-input);
   transition: border-color 0.18s ease;
 }
 
@@ -110,6 +110,51 @@ h1 {
   margin: 0 0 1.15rem;
   font-size: 0.875rem;
 }
+.loading-results {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 1.15rem;
+  font-size: 0.875rem;
+  color: var(--gs-text-secondary);
+}
+
+.dots {
+  display: inline-flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.dots span {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--gs-muted);
+  opacity: 0.4;
+  animation: dotPulse 1s ease-in-out infinite;
+}
+
+.dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes dotPulse {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  40% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
 
 .message--ok {
   color: var(--gs-playing);
@@ -207,6 +252,18 @@ h1 {
 .add-btn:hover {
   background: rgba(61, 255, 186, 0.18);
   border-color: rgba(61, 255, 186, 0.55);
+}
+
+.add-btn.is-added {
+  background: rgba(148, 163, 184, 0.18);
+  border-color: rgba(148, 163, 184, 0.4);
+  color: var(--gs-text-secondary);
+  cursor: default;
+}
+
+.add-btn.is-added:hover {
+  background: rgba(148, 163, 184, 0.18);
+  border-color: rgba(148, 163, 184, 0.4);
 }
 
 @media (max-width: 520px) {

@@ -7,7 +7,7 @@
 .page-content {
   margin-top: 1.25rem;
   position: relative;
-  background: linear-gradient(180deg, rgba(20, 24, 32, 0.98) 0%, rgba(18, 21, 28, 0.99) 100%);
+  background: linear-gradient(180deg, var(--gs-page-top) 0%, var(--gs-page-bottom) 100%);
   border: 1px solid var(--gs-border-strong);
   border-radius: 16px;
   padding: clamp(1.25rem, 3vw, 2rem);

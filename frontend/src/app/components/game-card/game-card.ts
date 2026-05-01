@@ -12,6 +12,7 @@ import { Game } from '../../models/game';
 export class GameCard {
   @Input({ required: true }) game!: Game;
   @Output() delete = new EventEmitter<string>();
+  isRemoving = false;
 
   initials(): string {
     const t = this.game.title?.trim() || '';
@@ -48,8 +49,10 @@ export class GameCard {
   }
 
   onDelete() {
-    if (this.game._id) {
-      this.delete.emit(this.game._id);
+    if (!this.game._id || this.isRemoving) {
+      return;
     }
+    this.isRemoving = true;
+    setTimeout(() => this.delete.emit(this.game._id as string), 180);
   }
 }
