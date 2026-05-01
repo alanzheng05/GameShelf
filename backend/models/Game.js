@@ -26,6 +26,22 @@ const gameSchema = new mongoose.Schema(
       type: String,
       trim: true,
       default: '',
+      maxlength: 2048,
+      validate: {
+        validator: function (value) {
+          if (!value) {
+            return true;
+          }
+
+          try {
+            const url = new URL(value);
+            return url.protocol === 'https:' && url.hostname === 'images.igdb.com';
+          } catch (error) {
+            return false;
+          }
+        },
+        message: 'coverUrl must be a https://images.igdb.com URL',
+      },
     },
     igdbId: {
       type: Number,
