@@ -36,7 +36,6 @@ GameShelf is a web application that organizes a userâ€™s video game library. Itâ
 
 ```
 git clone https://github.com/alanzheng05/GameShelf.git
-cd GameShelf
 ```
 
 
