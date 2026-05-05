@@ -1,5 +1,6 @@
 const axios = require('axios');
 const Game = require('../models/Game');
+const User = require('../models/User');
 
 // GET /api/games
 async function getGames(req, res) {
@@ -14,7 +15,11 @@ async function getGames(req, res) {
 // POST /api/games
 async function createGame(req, res) {
   try {
-    const game = new Game(req.body);
+    const defaultUser = await User.findOne({ username: 'defaultUser'});
+    const game = new Game({
+      ...req.body,
+      userId: defaultUser._id
+    });
     const saved = await game.save();
     res.status(201).json(saved);
   } catch (err) {
