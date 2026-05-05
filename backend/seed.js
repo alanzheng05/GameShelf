@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Game = require('./models/Game');
+const User = require('./models/User');
 require('dotenv').config();
 
 const seedData = [
@@ -19,6 +20,15 @@ async function seed() {
 
     await Game.deleteMany({});
     console.log('Cleared existing games');
+
+    const defaultUser = await User.create({
+      username:'defaultUser'
+    })
+
+    const gamesWithUser = seedData.map(game => ({
+      ...game,
+      userId: defaultUser._id
+    }));
 
     await Game.insertMany(seedData);
     console.log(`Seeded ${seedData.length} games`);
