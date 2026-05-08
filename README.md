@@ -18,6 +18,9 @@ GameShelf is a web application that organizes a user’s video game library. It�
 ## App deployment link
 https://gameshelf-iwix.onrender.com/
 
+**Note on deployed app:**
+This project is hosted on Render’s free tier. As a result, the backend may take up to ~50 seconds to respond after periods of inactivity due to cold starts. Once the server is active, performance is normal.
+
 ## YouTube presentation link
 https://youtu.be/OYxoIRw_3K4
 
