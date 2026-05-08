@@ -19,7 +19,7 @@ GameShelf is a web application that organizes a userâ€™s video game library. Itâ
 https://gameshelf-iwix.onrender.com/
 
 ## YouTube presentation link
-(To be completed)
+https://youtu.be/OYxoIRw_3K4
 
 ## Setup Instructions
 ### Prerequisites
