@@ -52,17 +52,6 @@ npm start
 Frontend runs at:
 http://localhost:4200
 
-### Backend Setup
-```
-cd backend
-npm install
-node seed.js
-npm run dev
-```
-
-Backend runs at:
-http://localhost:3000
-
 ### Environment Variables
 The backend requires environment variables to run properly.
 
@@ -79,6 +68,17 @@ PORT=3000
 IGDB_CLIENT_ID=your_client_id
 IGDB_ACCESS_TOKEN=your_access_token
 ```
+
+### Backend Setup
+```
+cd backend
+npm install
+node seed.js
+npm run dev
+```
+
+Backend runs at:
+http://localhost:3000
 
 ### Running the App
 
